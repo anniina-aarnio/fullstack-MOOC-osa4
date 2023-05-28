@@ -34,32 +34,11 @@ app.get('/api/blogs', (request, response) => {
 })
 
 app.post('/api/blogs', (request, response) => {
-  const { title, author, url, likes } = request.body
-
-  const blog = new Blog({
-    title: title,
-    author: author,
-    url: url,
-    likes: likes,
-  })
-
-  console.log(blog)
-
-  blog
-    .save()
-    .then(savedBlog => {
-      response.status(201).json(savedBlog)
-    })
-    .catch(error => {
-      console.log(error)
-      response.status(400).end()
-    }) //TODO: doesn't work
-  /*   //alkuperäinen   
   const blog = new Blog(request.body)
 
   blog.save().then(result => {
     response.status(201).json(result)
-  }) */
+  })
 })
 
 const PORT = process.env.PORT
